@@ -1,0 +1,1011 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Part I: Foundation – The Essential Infrastructure &#8212; Decoding Microbiota</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01-Micro-Profile-minor';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Part II: From Reads to Annotated Genome – A Practical Workflow" href="02-Micro-Profile-minor.html" />
+    <link rel="prev" title="Micro-Profiling" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Decoding Microbiota - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Decoding Microbiota - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Micro-Profiling
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Part I: Foundation – The Essential Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-Micro-Profile-minor.html">Part II: From Reads to Annotated Genome – A Practical Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-Micro-Profile-minor.html">Part III: Deciphering Function and Safety from the Genome – The Core of Probiotic Evaluation</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/nedchen2/DecodingMicrobiota" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/nedchen2/DecodingMicrobiota/issues/new?title=Issue%20on%20page%20%2F01-Micro-Profile-minor.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/01-Micro-Profile-minor.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Part I: Foundation – The Essential Infrastructure</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-1-essentials-of-bacterial-genomics">Chapter 1: Essentials of Bacterial Genomics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genome-and-central-dogma">1.1 Genome and Central Dogma</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-genome-the-biological-library">1.1.1 The Genome: The Biological Library</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-central-dogma-the-flow-of-genetic-information">1.1.2. The Central Dogma: The Flow of Genetic Information</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#i-replication-dna-rightarrow-dna"><strong>I. Replication (DNA <span class="math notranslate nohighlight">\(\rightarrow\)</span> DNA)</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-transcription-dna-rightarrow-rna"><strong>II. Transcription (DNA <span class="math notranslate nohighlight">\(\rightarrow\)</span> RNA)</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#iii-translation-rna-rightarrow-protein"><strong>III. Translation (RNA <span class="math notranslate nohighlight">\(\rightarrow\)</span> Protein)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-the-gene-regulation-and-molecular-modification">1.1.3 Beyond the Gene: Regulation and Molecular Modification</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structural-features-of-bacterial-genomes">1.2 Structural Features of Bacterial Genomes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-alignment-and-genome-assembly">1.3 Sequence Alignment and Genome Assembly</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-alignment-the-core-operation">1.3.1 Sequence Alignment: The Core Operation</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pairwise-alignment-global-vs-local">1.3.1.1 Pairwise Alignment: Global vs. Local</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#read-alignment-mapping">1.3.1.2 Read Alignment (Mapping)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-scores-and-significance">1.3.1.3 Alignment Scores and Significance</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-blast-metrics-identity-and-coverage">1.3.2 Introduction to BLAST Metrics: Identity and Coverage</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#the-necessity-of-dual-thresholding">The Necessity of Dual Thresholding</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-topology-reference-matrix">Alignment Topology Reference Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#de-novo-genome-assembly-reconstructing-the-unknown">1.3.2 De Novo Genome Assembly: Reconstructing the Unknown</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-assembly-quality">1.3.3 Evaluating Assembly Quality</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gene-annotation-deciphering-the-blueprint">1.4 Gene Annotation: Deciphering the Blueprint</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#structural-annotation-finding-the-genes">Structural Annotation: Finding the Genes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#functional-annotation-assigning-biological-meaning">Functional Annotation: Assigning Biological Meaning</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#annotation-pipelines-from-prediction-to-product">Annotation Pipelines: From Prediction to Product</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-caveat-of-computational-annotation">The Caveat of Computational Annotation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-and-leveraging-publicly-available-assembled-genomes">1.5 Accessing and Leveraging Publicly Available Assembled Genomes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-not-just-use-all-available-genomes">1.5.1 Why Not Just Use All Available Genomes?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#primary-repositories-for-assembled-genomes">1.5.2 Primary Repositories for Assembled Genomes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-tracking-and-versioning">1.5.3 Metadata Tracking and Versioning</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-1-genome-downloading">Case Study 1: Genome downloading</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <blockquote class="epigraph">
+<div><p>You cannot teach a man anything; you can only help him find it within himself.</p>
+<p class="attribution">—To The Beginners </p>
+</div></blockquote>
+<section class="tex2jax_ignore mathjax_ignore" id="part-i-foundation-the-essential-infrastructure">
+<h1>Part I: Foundation – The Essential Infrastructure<a class="headerlink" href="#part-i-foundation-the-essential-infrastructure" title="Link to this heading">#</a></h1>
+<p>Before we can interpret what a bacterial genome tells us about probiotic potential, we must first build a solid foundation. This part ensures that every student, regardless of their background, can confidently navigate the raw data and the computational environment. We cover the biological structures that shape bacterial genomes, the key concepts for comparing them, the most important concept in bioinformatics, the sequencing technologies that produce the data, and the practical steps to set up a reproducible analysis workspace.</p>
+<hr class="docutils" />
+<section id="chapter-1-essentials-of-bacterial-genomics">
+<h2>Chapter 1: Essentials of Bacterial Genomics<a class="headerlink" href="#chapter-1-essentials-of-bacterial-genomics" title="Link to this heading">#</a></h2>
+<p>A bacterial genome is more than a string of A, T, C, and G. It is a compact, information-rich molecule that reflects the organism’s lifestyle, metabolic repertoire, and evolutionary history. Understanding its physical and functional organization is the first step toward asking the right questions from the data.</p>
+<section id="genome-and-central-dogma">
+<h3>1.1 Genome and Central Dogma<a class="headerlink" href="#genome-and-central-dogma" title="Link to this heading">#</a></h3>
+<section id="the-genome-the-biological-library">
+<h4>1.1.1 The Genome: The Biological Library<a class="headerlink" href="#the-genome-the-biological-library" title="Link to this heading">#</a></h4>
+<p>A genome is the complete set of genetic instructions encoded in the DNA (or, for some viruses, RNA) of an organism. DNA is organized into long, thread-like structures called <strong>chromosomes</strong>. Within these, functional segments called <strong>genes</strong> provide the specific codes for individual traits and proteins. The term “genome” was coined in 1920 by Hans Winkler, blending “gene” and “chromosome,” and has since expanded to encompass all of an organism’s hereditary information. In the simplest sense, the genome is the master blueprint that directs cellular functions, defines metabolic capabilities, and orchestrates the organism’s response to its environment. The nuclear genome includes protein-coding genes and non-coding genes, other functional regions of the genome such as regulatory sequences (non-coding DNA), and often a substantial fraction of junk DNA with no evident function. The study of the genome is called genomics.</p>
+<ul class="simple">
+<li><p><strong>Genome - by wikipedia</strong>
+The first genome to be sequenced was that of the virus φX174 in 1977; the first genome sequence of a prokaryote (Haemophilus influenzae) was published in 1995;the yeast (Saccharomyces cerevisiae) genome was the first eukaryotic genome to be sequenced in 1996. The Human Genome Project was started in October 1990, and the first draft sequences of the human genome were reported in February 2001.</p></li>
+</ul>
+<p>The human genome, for instance, contains approximately 3 billion base pairs of DNA packaged into 23 pairs of chromosomes. While, bacterial genomes range in size from approximately 112 kb to 13 Mb, containing roughly 100 to 10,000 genes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the scientific literature, the term ‘genome’ usually refers to the large chromosomal DNA molecules in bacteria</p>
+</div>
+</section>
+<section id="the-central-dogma-the-flow-of-genetic-information">
+<h4>1.1.2. The Central Dogma: The Flow of Genetic Information<a class="headerlink" href="#the-central-dogma-the-flow-of-genetic-information" title="Link to this heading">#</a></h4>
+<p>The <strong>Central Dogma</strong> is a framework first proposed by Francis Crick in 1957. It describes the standard “workflow” of biological systems, illustrating how information moves from storage (DNA) to intermediate (RNA) to action (Protein).</p>
+<p>The process follows three fundamental stages:</p>
+<section id="i-replication-dna-rightarrow-dna">
+<h5><strong>I. Replication (DNA <span class="math notranslate nohighlight">\(\rightarrow\)</span> DNA)</strong><a class="headerlink" href="#i-replication-dna-rightarrow-dna" title="Link to this heading">#</a></h5>
+<p>To ensure genetic continuity, a cell must duplicate its entire genome before division. Enzymes like <strong>DNA Polymerase</strong> unwind the double helix and synthesize two new identical strands.</p>
+</section>
+<section id="ii-transcription-dna-rightarrow-rna">
+<h5><strong>II. Transcription (DNA <span class="math notranslate nohighlight">\(\rightarrow\)</span> RNA)</strong><a class="headerlink" href="#ii-transcription-dna-rightarrow-rna" title="Link to this heading">#</a></h5>
+<p>Information stored in a gene is “rewritten” into a mobile format. The cell creates a single-stranded molecule called <strong>messenger RNA (mRNA)</strong>.</p>
+<ul class="simple">
+<li><p><strong>Location:</strong> In eukaryotes, this occurs within the nucleus.</p></li>
+<li><p><strong>Mechanism:</strong> <strong>RNA Polymerase</strong> reads the DNA template strand and catalyzes the assembly of complementary RNA nucleotides.</p></li>
+</ul>
+</section>
+<section id="iii-translation-rna-rightarrow-protein">
+<h5><strong>III. Translation (RNA <span class="math notranslate nohighlight">\(\rightarrow\)</span> Protein)</strong><a class="headerlink" href="#iii-translation-rna-rightarrow-protein" title="Link to this heading">#</a></h5>
+<p>The mRNA sequence is “read” by the <strong>ribosome</strong> to build a protein.</p>
+<ul class="simple">
+<li><p><strong>The Code:</strong> The ribosome reads mRNA in groups of three nucleotides called <strong>codons</strong>.</p></li>
+<li><p><strong>The Result:</strong> Each codon specifies a particular <strong>amino acid</strong>. These amino acids are linked together to form a polypeptide chain, which then folds into a functional 3D protein.</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Summary of Information Flow</strong></p>
+<img src="./graphics/CentralDogma.png" alt="CentralDogma" width="1000px"> 
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Process</p></th>
+<th class="head text-left"><p>Template</p></th>
+<th class="head text-left"><p>Product</p></th>
+<th class="head text-left"><p>Primary Engine</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Replication</strong></p></td>
+<td class="text-left"><p>DNA</p></td>
+<td class="text-left"><p>DNA</p></td>
+<td class="text-left"><p>DNA Polymerase</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Transcription</strong></p></td>
+<td class="text-left"><p>DNA</p></td>
+<td class="text-left"><p>mRNA</p></td>
+<td class="text-left"><p>RNA Polymerase</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Translation</strong></p></td>
+<td class="text-left"><p>mRNA</p></td>
+<td class="text-left"><p>Protein</p></td>
+<td class="text-left"><p>Ribosome</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="beyond-the-gene-regulation-and-molecular-modification">
+<h4>1.1.3 Beyond the Gene: Regulation and Molecular Modification<a class="headerlink" href="#beyond-the-gene-regulation-and-molecular-modification" title="Link to this heading">#</a></h4>
+<p>A gene sequence is the baseline for heredity, but the ultimate function of that gene product is shaped by multiple additional layers:</p>
+<ul class="simple">
+<li><p><strong>Transcriptional regulation</strong></p>
+<ul>
+<li><p>Promoters, repressors, activators, and sigma factors control whether and how much mRNA is produced.</p></li>
+</ul>
+</li>
+<li><p><strong>Post-transcriptional modification</strong></p>
+<ul>
+<li><p>In bacteria, mRNA stability, riboswitches, and small regulatory RNAs (sRNAs) influence mRNA half-life and translational efficiency.</p></li>
+</ul>
+</li>
+<li><p><strong>Translational control</strong></p>
+<ul>
+<li><p>Ribosome binding site strength, codon usage, and attenuation mechanisms determine how efficiently an mRNA is translated.</p></li>
+</ul>
+</li>
+<li><p><strong>Post-translational modification</strong></p>
+<ul>
+<li><p>Proteins can be modified after translation by phosphorylation, acetylation, methylation, proteolytic cleavage, and other chemical changes, which alter activity, stability, or interactions.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These regulatory and modification processes mean that the same gene can have different functional outcomes depending on cellular context, growth conditions, and environmental signals. <strong>For probiotic evaluation, understanding these layers is essential because beneficial traits often depend on gene regulation and protein activation, not just gene presence.</strong></p>
+</div>
+</section>
+</section>
+<section id="structural-features-of-bacterial-genomes">
+<h3>1.2 Structural Features of Bacterial Genomes<a class="headerlink" href="#structural-features-of-bacterial-genomes" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Chromosome topology and size</strong></p>
+<p>Most bacteria carry a single circular chromosome, typically ranging from 0.5 Mbp (e.g., <em>Mycoplasma genitalium</em>) to over 10 Mbp (e.g., <em>Sorangium cellulosum</em>). However, linear chromosomes and multipartite genomes exist (e.g., <em>Borrelia burgdorferi</em>, <em>Vibrio cholerae</em>). Knowing the expected genome size of your target species helps you judge assembly completeness early on.</p>
+</li>
+<li><p><strong>Gene density and operons</strong></p>
+<p>Bacterial genomes are gene-dense: coding sequences (CDSs) often occupy 85–90% of the chromosome. Genes with related functions are frequently organized into <strong>operons</strong>—groups of contiguous genes transcribed as a single polycistronic mRNA. For example, the <em>lac</em> operon of <em>E. coli</em> coordinates lactose utilization. Recognizing operon architecture aids in functional annotation because the physical clustering of genes can hint at shared pathways.</p>
+</li>
+<li><p><strong>Plasmids: the accessory genetic repertoire</strong></p>
+<p>Plasmids are extrachromosomal, self-replicating DNA molecules that range from a few kilobases to several hundred kilobases. They often carry genes that confer adaptive advantages under specific conditions:</p>
+<ul class="simple">
+<li><p>Antibiotic resistance genes (e.g., β-lactamases)</p></li>
+<li><p>Virulence factors (e.g., toxins, adhesion factors)</p></li>
+<li><p>Metabolic specializations (e.g., utilization of unusual carbon sources)
+When assessing a candidate probiotic, the presence and gene content of plasmids are critical. A plasmid might encode a desirable bacteriocin, or it might harbour a transferable antibiotic resistance gene—a major safety concern.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="sequence-alignment-and-genome-assembly">
+<h3>1.3 Sequence Alignment and Genome Assembly<a class="headerlink" href="#sequence-alignment-and-genome-assembly" title="Link to this heading">#</a></h3>
+<p>Before a genome can be annotated, the millions of short (or long) fragments produced by the sequencer must be stitched together into contiguous sequences that represent the original chromosome(s) and plasmids. This process—<strong>genome assembly</strong>—relies fundamentally on the concept of <strong>sequence alignment</strong>.</p>
+<section id="sequence-alignment-the-core-operation">
+<h4>1.3.1 Sequence Alignment: The Core Operation<a class="headerlink" href="#sequence-alignment-the-core-operation" title="Link to this heading">#</a></h4>
+<p>Sequence alignment is the act of arranging two or more DNA (or protein) sequences to identify regions of similarity. The output is an alignment that may include matches, mismatches, and gaps (insertions/deletions). Alignments are central to almost every computational step: read mapping, overlap detection during assembly, multiple sequence alignment for phylogenetics, and database searches for annotation.</p>
+<section id="pairwise-alignment-global-vs-local">
+<h5>1.3.1.1 Pairwise Alignment: Global vs. Local<a class="headerlink" href="#pairwise-alignment-global-vs-local" title="Link to this heading">#</a></h5>
+<p>When comparing two sequences, two classical algorithmic approaches are used:</p>
+<ul class="simple">
+<li><p><strong>Global alignment</strong> forces the alignment to span the entire length of both sequences, end‑to‑end. The Needleman–Wunsch algorithm is the classic dynamic programming method. It is appropriate when the sequences are expected to be similar over their full lengths (e.g., allelic variants of the same gene).</p></li>
+<li><p><strong>Local alignment</strong> identifies the highest‑scoring subsequence(s) shared between two sequences, ignoring poorly matching ends. The Smith–Waterman algorithm performs local alignment. This is the basis for BLAST (Basic Local Alignment Search Tool), which searches a query sequence against a database to find regions of similarity.</p></li>
+</ul>
+<img src="./graphics/Global-and-Local-Alignment-of-two-sequences.jpg" alt="Alignment" width="500px"> 
+<p>In the context of genome assembly, we are primarily concerned with local alignments—finding overlaps between reads or between a read and a reference contig.</p>
+</section>
+<section id="read-alignment-mapping">
+<h5>1.3.1.2 Read Alignment (Mapping)<a class="headerlink" href="#read-alignment-mapping" title="Link to this heading">#</a></h5>
+<p>When a closely related reference genome is already available, new sequencing reads can be <strong>mapped</strong> to that reference. This is a rapid way to identify differences (SNPs, small indels, structural variants) and to estimate the coverage depth across the genome. Popular short‑read mappers like <strong>BWA-MEM</strong> and <strong>Bowtie2</strong> use an index of the reference (often a Burrows–Wheeler Transform or FM‑index) to efficiently place millions of reads.</p>
+<p>Mapping is not always part of a <em>de novo</em> assembly pipeline, but it is extremely useful for:</p>
+<ul class="simple">
+<li><p>Evaluating assembly quality by mapping the original reads back onto the assembled contigs to check for consistency and coverage.</p></li>
+<li><p>Performing read‑based error correction before assembly (e.g., <code class="docutils literal notranslate"><span class="pre">Lighter</span></code>, <code class="docutils literal notranslate"><span class="pre">BayesHammer</span></code> in SPAdes).</p></li>
+<li><p>Detecting contamination by mapping reads against a panel of potential contaminant genomes.</p></li>
+</ul>
+</section>
+<section id="alignment-scores-and-significance">
+<h5>1.3.1.3 Alignment Scores and Significance<a class="headerlink" href="#alignment-scores-and-significance" title="Link to this heading">#</a></h5>
+<p>Every alignment is evaluated by a scoring system. Match and mismatch scores are assigned (e.g., +1 for a match, −1 for a mismatch), and gap penalties (cost of opening and extending a gap) discourage the introduction of excessive indels. The sum of these scores determines the alignment quality. For BLAST, the Expect value (E‑value) estimates the number of alignments with a given score that would be expected by chance; a low E‑value indicates a biologically meaningful match.</p>
+</section>
+</section>
+<section id="introduction-to-blast-metrics-identity-and-coverage">
+<h4>1.3.2 Introduction to BLAST Metrics: Identity and Coverage<a class="headerlink" href="#introduction-to-blast-metrics-identity-and-coverage" title="Link to this heading">#</a></h4>
+<p>In computational biology and genomic analysis, local alignment algorithms—most notably the Basic Local Alignment Search Tool (BLAST)—are fundamental for inferring the homology, function, and evolutionary history of unknown sequences. When querying a nucleotide or amino acid sequence against a reference database, BLAST evaluates local alignments based on statistical significance (<span class="math notranslate nohighlight">\(E\)</span>-value) and raw alignment scores. However, establishing the biological relevance of an alignment requires a dual evaluation of its sequence-level conservation and structural completeness. This is achieved through two primary metrics: <strong>Percent Sequence Identity</strong> and <strong>Query Coverage</strong>.</p>
+<p><strong>Percent Sequence Identity</strong></p>
+<p>Percent sequence identity (<span class="math notranslate nohighlight">\(I\)</span>) quantifies the proportion of exact residue matches within the aligned regions. It serves as a direct proxy for evolutionary distance and sequence conservation, mathematically expressed as:</p>
+<div class="math notranslate nohighlight">
+\[I = \left( \frac{M}{L_{\text{alignment}}} \right) \times 100\]</div>
+<p>Where <span class="math notranslate nohighlight">\(M\)</span> is the number of identical character matches and <span class="math notranslate nohighlight">\(L_{\text{alignment}}\)</span> is the total length of the aligned region, including any internal gaps introduced by the algorithm to optimize the alignment score. A high percent identity implies that the two sequences have deviated minimally from their most recent common ancestor, suggesting conserved biochemical properties and tertiary structures.</p>
+<p><strong>Query Coverage</strong></p>
+<p>Conversely, query coverage (<span class="math notranslate nohighlight">\(C\)</span>) measures the global footprint of the alignment relative to the input sequence, reflecting the structural or domain-level completeness of the match. It is calculated as:</p>
+<div class="math notranslate nohighlight">
+\[C = \left( \frac{L_{\text{included}}}{L_{\text{query}}} \right) \times 100\]</div>
+<p>Where <span class="math notranslate nohighlight">\(L_{\text{included}}\)</span> represents the total number of residues of the query sequence captured within the alignment boundaries, and <span class="math notranslate nohighlight">\(L_{\text{query}}\)</span> is the absolute length of the input sequence. High query coverage ensures that the alignment spans the majority of the gene or protein, implying that the global multi-domain architecture has been preserved.</p>
+<section id="the-necessity-of-dual-thresholding">
+<h5>The Necessity of Dual Thresholding<a class="headerlink" href="#the-necessity-of-dual-thresholding" title="Link to this heading">#</a></h5>
+<p>Relying on either metric in isolation introduces significant analytical bias. For instance, a high percent identity over a short, localized segment (high identity, low coverage) often represents a single shared functional motif or low-complexity region rather than true orthology. Conversely, an alignment spanning the entire length of a sequence but possessing low identity (low identity, high coverage) may indicate distant divergence over deep evolutionary time or non-homologous structural convergence.</p>
+<p>To minimize false-positive annotations, genomic workflows routinely implement stringent, simultaneous thresholding of both percent identity and query coverage. This combinatorial approach ensures high-confidence ortholog identification, which is critical when delineating mobile genetic elements, such as distinguishing plasmid-borne genes from chromosomal loci.</p>
+</section>
+<hr class="docutils" />
+<section id="alignment-topology-reference-matrix">
+<h5>Alignment Topology Reference Matrix<a class="headerlink" href="#alignment-topology-reference-matrix" title="Link to this heading">#</a></h5>
+<p>To systematically validate BLAST outputs, alignments can be categorized into four distinct biological quadrants based on their metric thresholds:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Scenario</p></th>
+<th class="head text-left"><p>Percent Identity</p></th>
+<th class="head text-left"><p>Query Coverage</p></th>
+<th class="head text-left"><p>Biological Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Quadrant I</strong></p></td>
+<td class="text-left"><p>High</p></td>
+<td class="text-left"><p>High</p></td>
+<td class="text-left"><p><strong>True Orthology / High-Confidence Hit:</strong> The sequences are highly conserved across their entire length. Strong evidence for shared function and recent common ancestry.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Quadrant II</strong></p></td>
+<td class="text-left"><p>High</p></td>
+<td class="text-left"><p>Low</p></td>
+<td class="text-left"><p><strong>Shared Local Domain / Motif:</strong> The sequences share a highly conserved functional domain (e.g., a catalytic site), but global structures differ. Not full orthologs.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Quadrant III</strong></p></td>
+<td class="text-left"><p>Low</p></td>
+<td class="text-left"><p>High</p></td>
+<td class="text-left"><p><strong>Distant Homology / Structural Divergence:</strong> The sequences share a similar structural backbone or length but have accumulated extensive mutations.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Quadrant IV</strong></p></td>
+<td class="text-left"><p>Low</p></td>
+<td class="text-left"><p>Low</p></td>
+<td class="text-left"><p><strong>Spurious Match / Local Noise:</strong> Weak, short alignments that are typically statistical artifacts or low-complexity sequence repeats.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>NanoBanana generated summary:</p>
+<img src="./graphics/identity_vs_coverage.png" alt="Alignment" width="1000px"> 
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>although quite informative, AI generated figures still have some visible errors. Just generally consider:</p>
+<ol class="arabic simple">
+<li><p>the green color in both query and subjects refers to identical character matches.</p></li>
+<li><p>The red color in both query and subjects refers to character mismatches.</p></li>
+</ol>
+</div>
+</section>
+</section>
+<section id="de-novo-genome-assembly-reconstructing-the-unknown">
+<h4>1.3.2 De Novo Genome Assembly: Reconstructing the Unknown<a class="headerlink" href="#de-novo-genome-assembly-reconstructing-the-unknown" title="Link to this heading">#</a></h4>
+<p>When no suitable reference exists, or when we want an unbiased representation of the genome (including large insertions, rearrangements, and plasmids), we must perform <strong><em>de novo</em> assembly</strong>. The goal is to reconstruct the original genome sequence(s) from the set of reads alone. The strategy differs fundamentally for short reads and long reads.</p>
+<p>In the era of high-throughput sequencing, reconstructing a complete and accurate genome is subject to solving a massive, multi-million-piece <strong>jigsaw puzzle</strong>. Because sequencing machines cannot read an entire chromosome from end to end, they generate millions of short or long fragments (“reads”) that must be computationally stitched back together into continuous sequences called <strong>contigs</strong>, which are then ordered into <strong>scaffolds</strong>. The algorithms, in general, can be described as <strong>“Construct genome sequence from overlaps between reads”</strong>.</p>
+<div class="highlight-Text notranslate"><div class="highlight"><pre><span></span>Details of the algorithm skipped.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The fidelity, completeness, and structural accuracy of this reconstructed sequence define its <strong>genome quality</strong>. High genome quality is critical for downstream applications, such as identifying disease-causing mutations, studying evolutionary biology, and functional genomics.</p>
+</div>
+</section>
+<section id="evaluating-assembly-quality">
+<h4>1.3.3 Evaluating Assembly Quality<a class="headerlink" href="#evaluating-assembly-quality" title="Link to this heading">#</a></h4>
+<p>An assembly is a hypothesis about the true genome. Before proceeding to annotation, we must assess its correctness and completeness using complementary metrics.</p>
+<p>Genome quality is not determined by a single number. Instead, it is evaluated using a combination of continuity, completeness, and accuracy metrics.</p>
+<ul class="simple">
+<li><p><strong>Contiguity metrics</strong>:</p>
+<ul>
+<li><p><strong>N50</strong>: The length of the shortest contig at which half the total assembly length is covered (after sorting contigs from longest to shortest). Higher N50 indicates a more contiguous assembly. A single‑contig assembly has N50 equal to the genome length.</p></li>
+<li><p><strong>Number of contigs</strong> and <strong>longest contig</strong>: For a typical bacterial genome, a complete assembly yields one circular contig per chromosome/plasmid and a few small pieces for repetitive regions if not fully resolved.</p></li>
+</ul>
+</li>
+<li><p><strong>Completeness</strong>:</p>
+<ul>
+<li><p><strong>BUSCO</strong> (Benchmarking Universal Single‑Copy Orthologs): Searches the assembly for a lineage‑specific set of conserved single‑copy genes. Reports the percentages of complete (single‑copy or duplicated), fragmented, and missing genes. A near‑complete assembly should show &gt;95% complete and very few missing.</p></li>
+<li><p><strong>CheckM</strong>: Uses lineage‑specific marker genes to estimate completeness and contamination (presence of multiple copies of single‑copy markers suggests mixed strains).</p></li>
+</ul>
+</li>
+<li><p><strong>Correctness</strong>:</p>
+<ul>
+<li><p><strong>QUAST</strong> (Quality Assessment Tool for Genome Assemblies): Summarises contiguity, calculates GC content deviations, aligns contigs to a reference (if provided) to report genome fraction, misassemblies, and indels. It is the standard tool for evaluating assemblies.</p></li>
+<li><p><strong>Mapping rate</strong>: The percentage of reads that map back to the assembled genome. If coverage is uniform and &gt;98% of reads map concordantly, the assembly is likely accurate. Sudden drops in coverage can indicate collapsed repeats or missing regions.</p></li>
+</ul>
+</li>
+<li><p><strong>Circularisation check</strong>: For a complete assembly, the terminal overlap of a contig should contain identical sequences. Tools like <code class="docutils literal notranslate"><span class="pre">circlator</span></code> or manual inspection of the assembly graph can verify whether a contig represents a true circular molecule.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The basic of the comparative genomic is the alignment. Try the example shared in the previous <a class="reference external" href="https://nedchen2.github.io/StartYourRJourney/02-R-start.html#case-exercise-3-dna-sequence-alignment">tutorial</a></p>
+</div>
+</section>
+</section>
+<section id="gene-annotation-deciphering-the-blueprint">
+<h3>1.4 Gene Annotation: Deciphering the Blueprint<a class="headerlink" href="#gene-annotation-deciphering-the-blueprint" title="Link to this heading">#</a></h3>
+<p>Once a genome is assembled into contigs or a complete chromosome, the next fundamental step is <strong>gene annotation</strong>—the process of identifying the locations and functions of genes on the DNA sequence. Annotation transforms a string of nucleotides into a biologically interpretable parts list. Without accurate annotation, all downstream analyses of probiotic potential remain blind.</p>
+<p>Annotation is conventionally divided into two linked phases:</p>
+<section id="structural-annotation-finding-the-genes">
+<h4>Structural Annotation: Finding the Genes<a class="headerlink" href="#structural-annotation-finding-the-genes" title="Link to this heading">#</a></h4>
+<p>Structural annotation locates genomic elements: protein-coding sequences (CDSs), ribosomal RNAs (rRNAs), transfer RNAs (tRNAs), and other non-coding RNAs. In prokaryotes, the gold-standard tool for predicting CDSs is <strong>Prodigal</strong> (Prokaryotic Dynamic Programming Genefinding Algorithm). Prodigal builds a statistical model of the genome’s nucleotide composition (codon usage, GC bias, hexamer frequencies) and uses it to identify open reading frames (ORFs) while also recognizing ribosome binding sites (Shine–Dalgarno sequences). This dual signal dramatically increases accuracy compared to simple ORF scanning.</p>
+<p>Key outputs of structural annotation:</p>
+<ul class="simple">
+<li><p>A set of predicted gene coordinates (start and stop positions on each contig).</p></li>
+<li><p>Nucleotide and translated protein sequences for each CDS.</p></li>
+</ul>
+</section>
+<section id="functional-annotation-assigning-biological-meaning">
+<h4>Functional Annotation: Assigning Biological Meaning<a class="headerlink" href="#functional-annotation-assigning-biological-meaning" title="Link to this heading">#</a></h4>
+<p>Functional annotation answers the question: “What does each gene do?” It almost always relies on transferring information from experimentally characterised sequences or conserved domains.</p>
+<p>The most common strategies are:</p>
+<ul class="simple">
+<li><p><strong>Homology-based transfer</strong>
+A predicted protein sequence is compared against large, curated databases using BLAST or Diamond. If a match is statistically significant and shares high sequence identity (e.g., &gt; 40% across &gt; 80% of the length), the function of the database hit is tentatively assigned to the query gene. Widely used databases include:</p>
+<ul>
+<li><p><strong>NR (NCBI non‑redundant protein)</strong> – comprehensive but contains many uncurated entries; useful for broad overviews.</p></li>
+<li><p><strong>UniProtKB/Swiss‑Prot</strong> – manually curated, high‑quality subset; ideal when available.</p></li>
+<li><p><strong>COG (Clusters of Orthologous Groups)</strong> and <strong>eggNOG</strong> – groups of orthologous proteins; each group is assigned a functional category (e.g., “G: Carbohydrate transport and metabolism”). This reduces the impact of misannotation because the assignment is based on group membership, not a single best hit.</p></li>
+</ul>
+</li>
+<li><p><strong>Conserved domain and protein family searches</strong>
+Many proteins are defined by the presence of one or more conserved functional domains, even if their overall sequence varies. Searching against domain databases identifies these signatures with high sensitivity:</p>
+<ul>
+<li><p><strong>Pfam</strong> – hidden Markov model (HMM) profiles of protein families.</p></li>
+<li><p><strong>InterPro</strong> – integrates multiple domain and family databases (Pfam, PROSITE, TIGRFAMs, etc.) to provide a comprehensive classification.</p></li>
+<li><p><strong>KEGG Orthology (KO)</strong> – assigns identifiers that link proteins directly to metabolic pathway maps.</p></li>
+</ul>
+</li>
+<li><p><strong>Pathway mapping</strong>
+Once genes are assigned KO numbers, they can be mapped onto KEGG pathway diagrams to reconstruct the organism’s metabolic network. This is how we will assess the completeness of pathways such as short‑chain fatty acid synthesis or vitamin biosynthesis in later chapters.</p></li>
+</ul>
+</section>
+<section id="annotation-pipelines-from-prediction-to-product">
+<h4>Annotation Pipelines: From Prediction to Product<a class="headerlink" href="#annotation-pipelines-from-prediction-to-product" title="Link to this heading">#</a></h4>
+<p>Manually running Prodigal, BLAST, HMMER, and InterProScan for every gene is time‑consuming and error‑prone. Instead, we use integrated pipelines. The workhorse in this book is <strong>Prokka</strong>, introduced in detail in Chapter 4. Prokka orchestrates:</p>
+<ol class="arabic simple">
+<li><p>Prodigal for CDS prediction.</p></li>
+<li><p>Aragorn for tRNA/rRNA detection.</p></li>
+<li><p>BLAST+ and HMMER against curated bacterial protein databases to assign gene names and functions.</p></li>
+</ol>
+<p>Prokka produces ready‑to‑use output in multiple formats (GenBank, GFF, protein FASTA). This standardised output becomes the input for virtually all subsequent tools: antiSMASH, eggNOG‑mapper, and virulence databases.</p>
+</section>
+<section id="the-caveat-of-computational-annotation">
+<h4>The Caveat of Computational Annotation<a class="headerlink" href="#the-caveat-of-computational-annotation" title="Link to this heading">#</a></h4>
+<p>Every functional annotation derived solely from sequence similarity is a <strong>prediction</strong>, not a proven fact. Errors propagate: if a database entry is misannotated, all sequences that match it will inherit that error. Therefore, we must treat annotations as hypotheses. When a gene is critical for probiotic potential (e.g., a bacteriocin), its function should ideally be verified by biochemical assays. In the absence of laboratory validation, we seek convergent evidence: agreement between multiple annotation methods, conserved domain architecture, and genomic context (e.g., location within a known biosynthetic gene cluster) increases our confidence.</p>
+<p>With a clear understanding of what gene annotation entails, we are now ready to assemble the toolkit that will take us from raw reads to an annotated genome.</p>
+</section>
+</section>
+<section id="accessing-and-leveraging-publicly-available-assembled-genomes">
+<h3>1.5 Accessing and Leveraging Publicly Available Assembled Genomes<a class="headerlink" href="#accessing-and-leveraging-publicly-available-assembled-genomes" title="Link to this heading">#</a></h3>
+<p>Comparative genomics, pangenome analysis, and phylogenetic placement all require a set of reference genomes. Public repositories hold hundreds of thousands of bacterial genome assemblies, but their quality and completeness vary dramatically. This chapter teaches you how to find, download, and critically assess assembled genomes from public databases so that you can build a robust reference set for your probiotic evaluation.</p>
+<section id="why-not-just-use-all-available-genomes">
+<h4>1.5.1 Why Not Just Use All Available Genomes?<a class="headerlink" href="#why-not-just-use-all-available-genomes" title="Link to this heading">#</a></h4>
+<p>Downloading every assembly labelled with your species of interest is tempting but dangerous. Low‑quality drafts, contaminated assemblies, and misclassified genomes will distort your downstream analyses. A recent study estimated that up to 10% of bacterial genomes in GenBank may be contaminated or misidentified. Therefore, selecting and filtering public genomes is as important as sequencing your own isolate.</p>
+</section>
+<section id="primary-repositories-for-assembled-genomes">
+<h4>1.5.2 Primary Repositories for Assembled Genomes<a class="headerlink" href="#primary-repositories-for-assembled-genomes" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Database</p></th>
+<th class="head"><p>Scope</p></th>
+<th class="head"><p>Typical assembly content</p></th>
+<th class="head"><p>Access method</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>NCBI Assembly</strong></p></td>
+<td><p>All domains of life; largest collection</p></td>
+<td><p>FASTA, GenBank, GFF, metadata</p></td>
+<td><p>Web, <code class="docutils literal notranslate"><span class="pre">datasets</span></code> CLI, FTP</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ENA (European Nucleotide Archive)</strong></p></td>
+<td><p>Same raw data as NCBI, but different assembly bundles</p></td>
+<td><p>Flat files, sometimes ENA‑specific accessions</p></td>
+<td><p>Web, FTP, API</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>DDBJ</strong></p></td>
+<td><p>Japanese partner of INSDC; identical submissions</p></td>
+<td><p>Same as NCBI/ENA</p></td>
+<td><p>Web, FTP</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>GTDB (Genome Taxonomy Database)</strong></p></td>
+<td><p>Phylogenetically consistent classification of bacteria and archaea</p></td>
+<td><p>Repackaged assemblies with uniform quality controls</p></td>
+<td><p>Web, API (gtdb‑tk)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>IMG/MER (Integrated Microbial Genomes)</strong></p></td>
+<td><p>Curated by JGI; extensive comparative tools</p></td>
+<td><p>Genomes with IMG‑specific annotations</p></td>
+<td><p>Web, API</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>BV‑BRC (formerly PATRIC)</strong></p></td>
+<td><p>Comprehensive bacterial/viral resource, antimicrobial resistance data</p></td>
+<td><p>Assembled genomes with specialty annotations</p></td>
+<td><p>Web, CLI, FTP</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For most probiotic projects, <strong>NCBI Assembly</strong> is the starting point because of its comprehensive metadata and command‑line tools. <strong>GTDB</strong> is indispensable when you need a phylogenetically consistent reference set, particularly for identifying misclassified genomes.</p>
+</section>
+<section id="metadata-tracking-and-versioning">
+<h4>1.5.3 Metadata Tracking and Versioning<a class="headerlink" href="#metadata-tracking-and-versioning" title="Link to this heading">#</a></h4>
+<p>Public assemblies are updated: a genome that was “complete” last year might be superseded by a better assembly this year. Always record the exact accession version (e.g., <code class="docutils literal notranslate"><span class="pre">GCF_000001405.40</span></code>) and the date of download. NCBI’s <code class="docutils literal notranslate"><span class="pre">dataset_catalog.json</span></code> contains the version and assembly statistics for each genome. If you publish a comparative analysis, include a table listing all reference genomes with their accessions, versions, and quality metrics.</p>
+</section>
+</section>
+<section id="case-study-1-genome-downloading">
+<h3>Case Study 1: Genome downloading<a class="headerlink" href="#case-study-1-genome-downloading" title="Link to this heading">#</a></h3>
+<p><em>Lactiplantibacillus plantarum</em> is a typical recognized probiotic found very versatile in coloning different niches (such as plants, fermented foods, animal guts). In this tutorial, we will use a series of case study to understand the genomic information given from this traditional probiotics, and our <em>Intestinimonas butyriciproducens</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Try to download one genome of “Lactiplantibacillus plantarum WCFS1” from NCBI (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/datasets/genome/">https://www.ncbi.nlm.nih.gov/datasets/genome/</a>).</p>
+<ul class="simple">
+<li><p>Record the genome quality.</p></li>
+<li><p>Download genome fasta file, gff, protein file.</p></li>
+<li><p>Discuss why we choose this genome.</p></li>
+</ul>
+<p>Similarly, search “Intestinimonas butyriciproducens”</p>
+<ul class="simple">
+<li><p>Which strain genome would you choose? Why?</p></li>
+<li><p>Record the genome quality.</p></li>
+<li><p>Download genome fasta file, gff, protein file.</p></li>
+<li><p>Write methodology to describe why you choose these genome.</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Micro-Profiling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02-Micro-Profile-minor.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Part II: From Reads to Annotated Genome – A Practical Workflow</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-1-essentials-of-bacterial-genomics">Chapter 1: Essentials of Bacterial Genomics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genome-and-central-dogma">1.1 Genome and Central Dogma</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-genome-the-biological-library">1.1.1 The Genome: The Biological Library</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-central-dogma-the-flow-of-genetic-information">1.1.2. The Central Dogma: The Flow of Genetic Information</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#i-replication-dna-rightarrow-dna"><strong>I. Replication (DNA <span class="math notranslate nohighlight">\(\rightarrow\)</span> DNA)</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-transcription-dna-rightarrow-rna"><strong>II. Transcription (DNA <span class="math notranslate nohighlight">\(\rightarrow\)</span> RNA)</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#iii-translation-rna-rightarrow-protein"><strong>III. Translation (RNA <span class="math notranslate nohighlight">\(\rightarrow\)</span> Protein)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-the-gene-regulation-and-molecular-modification">1.1.3 Beyond the Gene: Regulation and Molecular Modification</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structural-features-of-bacterial-genomes">1.2 Structural Features of Bacterial Genomes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-alignment-and-genome-assembly">1.3 Sequence Alignment and Genome Assembly</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-alignment-the-core-operation">1.3.1 Sequence Alignment: The Core Operation</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pairwise-alignment-global-vs-local">1.3.1.1 Pairwise Alignment: Global vs. Local</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#read-alignment-mapping">1.3.1.2 Read Alignment (Mapping)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-scores-and-significance">1.3.1.3 Alignment Scores and Significance</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-blast-metrics-identity-and-coverage">1.3.2 Introduction to BLAST Metrics: Identity and Coverage</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#the-necessity-of-dual-thresholding">The Necessity of Dual Thresholding</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-topology-reference-matrix">Alignment Topology Reference Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#de-novo-genome-assembly-reconstructing-the-unknown">1.3.2 De Novo Genome Assembly: Reconstructing the Unknown</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-assembly-quality">1.3.3 Evaluating Assembly Quality</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gene-annotation-deciphering-the-blueprint">1.4 Gene Annotation: Deciphering the Blueprint</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#structural-annotation-finding-the-genes">Structural Annotation: Finding the Genes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#functional-annotation-assigning-biological-meaning">Functional Annotation: Assigning Biological Meaning</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#annotation-pipelines-from-prediction-to-product">Annotation Pipelines: From Prediction to Product</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-caveat-of-computational-annotation">The Caveat of Computational Annotation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-and-leveraging-publicly-available-assembled-genomes">1.5 Accessing and Leveraging Publicly Available Assembled Genomes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-not-just-use-all-available-genomes">1.5.1 Why Not Just Use All Available Genomes?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#primary-repositories-for-assembled-genomes">1.5.2 Primary Repositories for Assembled Genomes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-tracking-and-versioning">1.5.3 Metadata Tracking and Versioning</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-1-genome-downloading">Case Study 1: Genome downloading</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Congjia Chen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
