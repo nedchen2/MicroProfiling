@@ -6,12 +6,10 @@ This tutorial will mainly focus on using online webserver tools and R:
 
 1. Safety assessment of the probiotics
 2. Genome annotation and metabolic potentials
-3. Introduction to non-targeted metabolomics study
-4. Downstream analysis (Analysis with proper statistical tools)
 
 As this tutorial is also open to external visitors, if you have any questions or collaborations regarding this tutorial or microbiota study, please email me with the email below.
 
-- You can assess the tutorial through the [Link](https://nedchen2.github.io/DecodingMicrobiota/intro.html)
+- You can assess the tutorial through the [Link](https://nedchen2.github.io/MicroProfiling/intro.html)
 
   
 
